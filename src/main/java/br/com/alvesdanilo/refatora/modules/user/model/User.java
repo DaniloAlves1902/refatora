@@ -1,5 +1,6 @@
 package br.com.alvesdanilo.refatora.modules.user.model;
 
+import br.com.alvesdanilo.refatora.shared.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -51,5 +52,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SeniorityLevel seniorityLevel = SeniorityLevel.CURIOUS;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
 
 }
