@@ -25,7 +25,7 @@ public class Exercise {
     @Column(nullable = false, length = 150)
     private String title;
 
-    @Column(nullable = false, length = 2000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(columnDefinition = "TEXT")
