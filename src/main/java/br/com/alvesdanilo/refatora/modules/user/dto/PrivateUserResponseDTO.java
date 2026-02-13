@@ -11,13 +11,13 @@ public record PrivateUserResponseDTO (
         String firstName,
         String lastName,
         String username,
+        String email,
         SeniorityLevel seniorityLevel,
         Role role
 ) {
 
     public PrivateUserResponseDTO(User user) {
         this(user.getId(), user.getFirstName(),
-                user.getLastName(), user.getUsername(), user.getSeniorityLevel(), user.getRole());
+                user.getLastName(), user.getUsername(), user.getEmail(), user.getSeniorityLevel(), user.getRole());
     }
 }
-
