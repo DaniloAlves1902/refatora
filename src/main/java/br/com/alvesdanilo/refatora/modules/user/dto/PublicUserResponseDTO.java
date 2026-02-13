@@ -10,12 +10,11 @@ public record PublicUserResponseDTO(
         String firstName,
         String lastName,
         String username,
-        String email,
         SeniorityLevel seniorityLevel
 ) {
 
     public PublicUserResponseDTO(User user) {
         this(user.getId(), user.getFirstName(),
-                user.getLastName(), user.getUsername(), user.getEmail(), user.getSeniorityLevel());
+                user.getLastName(), user.getUsername(), user.getSeniorityLevel());
     }
 }
