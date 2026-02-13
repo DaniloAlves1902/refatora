@@ -3,10 +3,7 @@ package br.com.alvesdanilo.refatora.modules.exercise;
 import br.com.alvesdanilo.refatora.modules.user.model.SeniorityLevel;
 import br.com.alvesdanilo.refatora.modules.user.model.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,6 +16,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Exercise {
 
     @Id
