@@ -56,19 +56,19 @@ public class UserService {
     }
 
     @Transactional
-    public PublicUserResponseDTO createCommonUser(CreateUserDTO data) {
+    public PrivateUserResponseDTO createCommonUser(CreateUserDTO data) {
         User user = saveNewUser(data, Role.USER);
-        return new PublicUserResponseDTO(user);
+        return new PrivateUserResponseDTO(user);
     }
 
     @Transactional
-    public PublicUserResponseDTO createAdminUser(CreateUserDTO data) {
+    public PrivateUserResponseDTO createAdminUser(CreateUserDTO data) {
         User user = saveNewUser(data, Role.ADMIN);
-        return new PublicUserResponseDTO(user);
+        return new PrivateUserResponseDTO(user);
     }
 
     @Transactional
-    public PublicUserResponseDTO update(UUID id, UpdateUserDTO data) {
+    public PrivateUserResponseDTO update(UUID id, UpdateUserDTO data) {
         User user = this.userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
 
@@ -87,9 +87,10 @@ public class UserService {
         user.setSeniorityLevel(data.seniorityLevel());
 
         this.userRepository.save(user);
-        return new PublicUserResponseDTO(user);
+        return new PrivateUserResponseDTO(user);
     }
 
+    @Transactional
     public void delete(UUID id) {
         if (!this.userRepository.existsById(id)) {
             throw new UserNotFoundException("User not found");
