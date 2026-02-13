@@ -1,4 +1,4 @@
-package br.com.alvesdanilo.refatora.modules.exercise;
+package br.com.alvesdanilo.refatora.modules.exercise.model;
 
 import br.com.alvesdanilo.refatora.modules.user.model.SeniorityLevel;
 import br.com.alvesdanilo.refatora.modules.user.model.User;
