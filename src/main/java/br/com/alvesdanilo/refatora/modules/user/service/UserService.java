@@ -72,13 +72,7 @@ public class UserService {
         User user = this.userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
 
-        if (!user.getEmail().equals(data.email()) && this.userRepository.findByEmail(data.email()).isPresent()) {
-            throw new EmailAlreadyExistsException("Email already in use");
-        }
-
-        if (!user.getUsername().equals(data.username()) && this.userRepository.findByUsername(data.username()).isPresent()) {
-            throw new UsernameAlreadyExistsException("Username already in use");
-        }
+        validateUniqueDataForUpdate(user, data);
 
         user.setFirstName(data.firstName());
         user.setLastName(data.lastName());
@@ -123,6 +117,16 @@ public class UserService {
 
         if (userRepository.findByEmail(email).isPresent()) {
             throw new EmailAlreadyExistsException("Email already in use");
+        }
+    }
+
+    private void validateUniqueDataForUpdate(User user, UpdateUserDTO data) {
+        if (!user.getEmail().equals(data.email()) && this.userRepository.findByEmail(data.email()).isPresent()) {
+            throw new EmailAlreadyExistsException("Email already in use");
+        }
+
+        if (!user.getUsername().equals(data.username()) && this.userRepository.findByUsername(data.username()).isPresent()) {
+            throw new UsernameAlreadyExistsException("Username already in use");
         }
     }
 
